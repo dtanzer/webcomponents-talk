@@ -1,0 +1,116 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "@webcomponents/html-imports",
+        "scope": "@webcomponents",
+        "escapedName": "@webcomponents%2fhtml-imports",
+        "name": "@webcomponents/html-imports",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\busin\\Documents\\Projects\\Playground\\webcomps-talk"
+    ]
+  ],
+  "_from": "@webcomponents/html-imports@latest",
+  "_id": "@webcomponents/html-imports@1.2.0",
+  "_inCache": true,
+  "_location": "/@webcomponents/html-imports",
+  "_nodeVersion": "8.11.2",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/html-imports_1.2.0_1528759965731_0.888479235754924"
+  },
+  "_npmUser": {
+    "name": "azakus",
+    "email": "dfreedm2@gmail.com"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "@webcomponents/html-imports",
+    "scope": "@webcomponents",
+    "escapedName": "@webcomponents%2fhtml-imports",
+    "name": "@webcomponents/html-imports",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@webcomponents/html-imports/-/html-imports-1.2.0.tgz",
+  "_shasum": "4213aae60faf47b6c47cc145dff4dc530ae6c2c4",
+  "_shrinkwrap": null,
+  "_spec": "@webcomponents/html-imports",
+  "_where": "C:\\Users\\busin\\Documents\\Projects\\Playground\\webcomps-talk",
+  "author": {
+    "name": "The Polymer Authors",
+    "url": "https://polymer.github.io/AUTHORS.txt"
+  },
+  "bugs": {
+    "url": "https://github.com/webcomponents/html-imports/issues"
+  },
+  "dependencies": {},
+  "description": "HTML Imports polyfill",
+  "devDependencies": {
+    "google-closure-compiler": "^20171112.0.0",
+    "gulp": "^3.8.8",
+    "gulp-sourcemaps": "^2.4.1",
+    "web-component-tester": "^6.4.1"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dist": {
+    "integrity": "sha512-EIy8RqSfsoJ5Tk2wsfaSX4IKhXg8oYCq/xVEz8LEELXhv5tup/iZ/SInoz8SLtZGFP+vjUh2oRsgkUMhbrr0GQ==",
+    "shasum": "4213aae60faf47b6c47cc145dff4dc530ae6c2c4",
+    "tarball": "https://registry.npmjs.org/@webcomponents/html-imports/-/html-imports-1.2.0.tgz",
+    "fileCount": 95,
+    "unpackedSize": 193150,
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbHwaeCRA9TVsSAnZWagAANXoP/0P24MwglbjkGHUJUP8J\n0oWjszz9xIqHMFITGRI5dLlEI/8l/gvKtqv79QPA2LzulTbgOra0iaXbP/el\ncJGynzwJ3gLELAWkrrIKgiMRcHF1588GLwYiJdnfRRFSj+X6ALFoHCpbwCKl\n2kFFoTEO8LKRXr1jTFoJBxz0iS2GQGTK+A7TkKme/LZrEykMejqr9ONFqNHG\n7hNMHCxXoYJSak4g+smXALR9tYQuYYVRXeD1XHahJgOr68jv4QNDFt149DI1\nkS3918OtMDdp9SMlz0Oo5Ojto+uhcBaCR9drEdZCcNh8Rnk9nZNTGNLIY8zf\nJ93bVd4VAc9nFg9fwKkr/YcueQjrqxDGWGFt9XIGBIbh1muoyaJaQxkJ3u1f\nieCW1Xgo+IdQRsRq2oWsygBwLrqpN7ol35QoQ6mZvzV5Oh403RbdVo19xTZa\nNGqLw0IsdX0Mng4jjnl7xz2ZqDeWuPjpLF2mwwaOP9kxwsNZEQNXxcc0tmFh\nuK0i5sMoypr1su99GTEaOIYvxL+XXMZy9IjZ+M1A5ypY40m2E6+1OqXfW1ER\nM8uD9b3I6sSTivvPqYM0O2glVPyV8zOAi58rSm6Nt3FwWTsM7Qeqsu1iFE97\n3x3Tj24AIypEgY9+bakQ0dRs8PchdJrDvk54iQypxdOM9DFixmv8KWMm1QCL\nmmF7\r\n=WZEL\r\n-----END PGP SIGNATURE-----\r\n"
+  },
+  "gitHead": "a83cc7065a719a6059ad13917e8205c01ad2c413",
+  "homepage": "https://webcomponents.org/polyfills",
+  "keywords": [
+    "html-imports",
+    "htmlimports",
+    "web-components",
+    "webcomponents",
+    "polyfill",
+    "shim"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "html-imports.min.js",
+  "maintainers": [
+    {
+      "name": "azakus",
+      "email": "dfreedm2@gmail.com"
+    },
+    {
+      "name": "bicknellr",
+      "email": "bicknellr@gmail.com"
+    },
+    {
+      "name": "webcomponents-devs",
+      "email": "polymer-ci@google.com"
+    }
+  ],
+  "name": "@webcomponents/html-imports",
+  "optionalDependencies": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webcomponents/html-imports.git"
+  },
+  "scripts": {
+    "build": "gulp",
+    "test": "wct"
+  },
+  "version": "1.2.0"
+}
