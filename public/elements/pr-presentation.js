@@ -1,4 +1,4 @@
-import { render, html } from '/js/lit-html/lit-html.js'
+import { render, html } from '/lit-html/lit-html.js'
 
 let style = html`
 <style>
@@ -16,17 +16,18 @@ class PrPresentation extends HTMLElement {
 		let shadowRoot = this.attachShadow({mode: 'open'});
 
 		render(template, this.shadowRoot);
-		this.currentSlide = 0;
+		this.currentSlide = parseInt(document.location.href.split("#")[1] || '0');
 		this.showSlide(this.currentSlide);
 		
 		if (window.ShadyCSS) { window.ShadyCSS.styleElement(this); }
 
-		document.body.addEventListener('keypress', e => {
-			if(e.key === 'PageDown' && this.currentSlide < this.children.length-1) {
+		document.body.addEventListener('keydown', e => {
+			console.log(e);
+			if((e.key === 'PageDown' || e.key === 'ArrowRight') && this.currentSlide < this.children.length-1) {
 				if(this.children[this.currentSlide].next != null) {
 					this.children[this.currentSlide].next();
 				}
-			} else if(e.key === 'PageUp' && this.currentSlide > 0) {
+			} else if((e.key === 'PageUp' || e.key === 'ArrowLeft') && this.currentSlide > 0) {
 				if(this.children[this.currentSlide].prev != null) {
 					this.children[this.currentSlide].prev();
 				}
@@ -49,6 +50,7 @@ class PrPresentation extends HTMLElement {
 		};
 
 		this.children[number].style.display = '';
+		history.pushState(null, null, '#'+number);
 	}
 }
 

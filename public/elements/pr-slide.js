@@ -1,9 +1,20 @@
-import { render, html } from '/js/lit-html/lit-html.js'
+import { render, html } from '/lit-html/lit-html.js'
 
 let style = html`
 <style>
 	:host {
 		display: block;
+		--slide-background: white;
+		background: var(--slide-background);
+		
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+
+	.main {
 		margin: 1em 3em;
 	}
 </style>
@@ -11,7 +22,7 @@ let style = html`
 
 let template = html`
 ${style}
-<div><slot></slot></div>
+<div class="main"><slot></slot></div>
 `;
 
 class PrSlide extends HTMLElement {

@@ -1,4 +1,4 @@
-import { render, html } from '/js/lit-html/lit-html.js'
+import { render, html } from '/lit-html/lit-html.js'
 
 let style = html`
 <style>

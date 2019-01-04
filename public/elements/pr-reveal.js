@@ -7,24 +7,24 @@ let style = html`
 
 let template = html`
 ${style}
-<ul><slot></slot></ul>
+<slot></slot>
 `;
 
-class RevealList extends HTMLElement {
+class PrReveal extends HTMLElement {
 	constructor() {
 		super();
 		let shadowRoot = this.attachShadow({mode: 'open'});
 
 		render(template, this.shadowRoot);
-		this.childrenShown = 0;
+		this.childrenShown = false;
 		this.showChildren(this.childrenShown);
 
 		if (window.ShadyCSS) { window.ShadyCSS.styleElement(this); }
 	}
 
-	showChildren(number) {
+	showChildren(shouldShow) {
 		for (let i=0; i<this.children.length; i++) {
-			if(i<number) {
+			if(shouldShow) {
 				this.children[i].style.display = '';
 			} else {
 				this.children[i].style.display = 'none';
@@ -33,24 +33,24 @@ class RevealList extends HTMLElement {
 	}
 
 	next() {
-		if(this.childrenShown === this.children.length) {
+		if(this.childrenShown) {
 			return false;
 		}
 
-		this.childrenShown++;
+		this.childrenShown = true;
 		this.showChildren(this.childrenShown);
 		return true;
 	}
 
 	prev() {
-		if(this.childrenShown === 0) {
+		if(!this.childrenShown) {
 			return false;
 		}
 		
-		this.childrenShown--;
+		this.childrenShown = false;
 		this.showChildren(this.childrenShown);
 		return true;
 	}
 }
 
-window.customElements.define('reveal-list', RevealList);
+window.customElements.define('pr-reveal', PrReveal);

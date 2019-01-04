@@ -33,7 +33,7 @@ pr-presentation {
 
 pre {
 	font-size: 2vh;
-	background: #ccc;
+	background: #eee;
 	border: 1px solid #777;
 	padding: 1em 2em;
 	overflow: auto;
@@ -51,4 +51,8 @@ pre {
 
 .two-col .col:first-child {
 	margin-left: 0;
+}
+
+.light-text {
+	color: #999;
 }

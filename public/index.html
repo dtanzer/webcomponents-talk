@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+		<link rel="shortcut icon" href="/favicon.ico" />
 
 		<link rel="stylesheet" href="/css/theme.css"/>
 		<link rel="stylesheet" href="/css/custom.css"/>
@@ -12,24 +12,10 @@
 			content="width=device-width, initial-scale=1, shrink-to-fit=no"
 		/>
 		<meta name="theme-color" content="#000000" />
-		<!--
-			manifest.json provides metadata used when your web app is added to the
-			homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
-		-->
-		<link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-		<!--
-			Notice the use of %PUBLIC_URL% in the tags above.
-			It will be replaced with the URL of the `public` folder during the build.
-			Only files inside the `public` folder can be referenced from the HTML.
 
-			Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-			work correctly both with client-side routing and a non-root public URL.
-			Learn how to configure a non-root public URL by running `npm run build`.
-		-->
-
-		<script type="application/javascript" src="/js/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script type="application/javascript" src="/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 		
-		<title>React App</title>
+		<title>Web Components</title>
 	</head>
 	<body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>
@@ -38,9 +24,10 @@
 		<script type="module" src="elements/pr-slide.js"></script>
 		<script type="module" src="elements/pr-title.js"></script>
 		<script type="module" src="elements/reveal-list.js"></script>
+		<script type="module" src="elements/pr-reveal.js"></script>
 
 		<pr-presentation>
-			<pr-slide>
+			<pr-slide style="--slide-background: #ff7">
 				<pr-title>
 					<div class="main">Web Components</div>
 					<div class="subtitle">A Quick Introduction</div>
@@ -67,14 +54,16 @@
 			<pr-slide>
 				<h1>HTML Imports</h1>
 
-				<pre>
+				<pr-reveal>
+					<pre>
 &lt;link rel="import" href="/elements/pr-slide.html" /&gt;</pre>
 
-				<h2 style="color: #700">Do not exist anymore!</h2>
-				<h2 style="color: #070">Now use (Only for Web Components!):</h2>
+					<h2 style="color: #700">Do not exist anymore!</h2>
+					<h2 style="color: #070">Now use (Only for Web Components!):</h2>
 
-				<pre>
+					<pre>
 &lt;script type="module" src="elements/pr-slide.js"&gt;&lt;/script&gt;</pre>
+				</pr-reveal>
 			</pr-slide>
 
 			<pr-slide>
@@ -111,23 +100,64 @@
 								}
 							</script>
 
-							<a href="#" onclick="insertTemplate()">Insert Template</a>
+							<input type="button" onclick="insertTemplate()" value="Insert Template"/>
 							<div id="example-template-target"></div>
 					</div>
 				</div>
 			</pr-slide>
+
+			<pr-slide>
+				<h1>Custom Elements</h1>
+				<pr-reveal>
+					<div class="two-col">
+						<pre class="col">
+&lt;pr-slide&gt;
+  &lt;h1&gt;Custom Elements&lt;/h1&gt;
+  &lt;pr-reveal&gt;
+    &lt;div class="two-col"&gt;
+      &lt;pre class="col"&gt;
+        ...
+      &lt;/pre&gt;
+      &lt;pre class="col"&gt;
+        ...
+      &lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/pr-reveal&gt;
+&lt;/pr-slide&gt;
+						</pre>
+						<pre class="col">
+class PrReveal <strong>extends HTMLElement</strong> {
+  constructor() {
+    <span class="light-text">//...</span>
+    this.childrenShown = false;
+    this.showChildren(this.childrenShown);
+    <span class="light-text">//...</span>
+  }
+  showChildren(shouldShow) {
+    for (let i=0; i&lt;this.<strong>children</strong>.length; i++) {
+      if(shouldShow) {
+        this.<strong>children</strong>[i].style.display = '';
+      } else {
+        this.<strong>children</strong>[i].style.display = 'none';
+      }
+    };
+  }
+  <span class="light-text">//...</span>
+}
+window.customElements.<strong>define</strong>('pr-reveal', PrReveal);
+						</pre>
+					</div>
+				</pr-reveal>
+			</pr-slide>
+
+			<pr-slide><h1>Shadow DOM</h1></pr-slide>
+
+			<pr-slide><h1>Custom Events</h1></pr-slide>
+
+			<pr-slide><h1>Styling</h1></pr-slide>
+
+			<pr-slide><h1>React / Angular / ...</h1></pr-slide>
+
 		</pr-presentation>
-
-		<div id="root" style="display:none"></div>
-		<!--
-			This HTML file is a template.
-			If you open it directly in the browser, you will see an empty page.
-
-			You can add webfonts, meta tags, or analytics to this file.
-			The build step will place the bundled scripts into the <body> tag.
-
-			To begin the development, run `npm start` or `yarn start`.
-			To create a production bundle, use `npm run build` or `yarn build`.
-		-->
 	</body>
 </html>
