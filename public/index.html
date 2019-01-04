@@ -54,14 +54,67 @@
 			<pr-slide>
 				<h1>Web Components</h1>
 				<reveal-list>
+					<li><span style="text-decoration: line-through">HTML Imports</span></li>
 					<li>HTML Templates</li>
 					<li>Custom Elements</li>
 					<li>Shadow DOM</li>
 					<li>Custom Events</li>
-					<li><span style="text-decoration: line-through">HTML Imports</span></li>
 					<li>Styling</li>
 					<li>React / Angular / ...</li>
 				</reveal-list>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>HTML Imports</h1>
+
+				<pre>
+&lt;link rel="import" href="/elements/pr-slide.html" /&gt;</pre>
+
+				<h2 style="color: #700">Do not exist anymore!</h2>
+				<h2 style="color: #070">Now use (Only for Web Components!):</h2>
+
+				<pre>
+&lt;script type="module" src="elements/pr-slide.js"&gt;&lt;/script&gt;</pre>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>HTML Templates</h1>
+				<div class="two-col">
+					<pre class="col">
+&lt;template id="example-template"&gt;
+    &lt;div&gt;Insert This Text, Please&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script type="application/javascript"&gt;
+  function insertTemplate() {
+    const template = document
+      .getElementById('example-template');
+    const realized = document
+      .importNode(template.content, true);
+    document.getElementById('example-template-target')
+      .appendChild(realized);
+  }
+&lt;/script&gt;
+
+&lt;a href="#" onclick="insertTemplate()"&gt;Insert Template&lt;/a&gt;
+&lt;div id="example-template-target"&gt;&lt;/div&gt;</pre>
+					<div class="col">
+							<template id="example-template">
+								<div>Insert This Text, Please</div>
+							</template>
+
+							<script type="application/javascript">
+								function insertTemplate() {
+									const template = document.getElementById('example-template');
+									const realized = document.importNode(template.content, true);
+									document.getElementById('example-template-target').appendChild(realized);
+								}
+							</script>
+
+							<a href="#" onclick="insertTemplate()">Insert Template</a>
+							<div id="example-template-target"></div>
+					</div>
+				</div>
 			</pr-slide>
 		</pr-presentation>
 

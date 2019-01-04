@@ -31,8 +31,24 @@ pr-presentation {
 	right: 0;
 }
 
-pr-slide {
-	display: block;
+pre {
+	font-size: 2vh;
+	background: #ccc;
+	border: 1px solid #777;
+	padding: 1em 2em;
+	overflow: auto;
+}
 
-	margin: 1em 2em;
+.two-col {
+	display: flex;
+	flex-direction: row;
+}
+
+.two-col .col {
+	width: calc(50% - 0.5em);
+	margin-left: 1em;
+}
+
+.two-col .col:first-child {
+	margin-left: 0;
 }

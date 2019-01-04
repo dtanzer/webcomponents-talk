@@ -21,15 +21,26 @@ class PrPresentation extends HTMLElement {
 		
 		if (window.ShadyCSS) { window.ShadyCSS.styleElement(this); }
 
-		document.addEventListener('keypress', e => {
+		document.body.addEventListener('keypress', e => {
 			if(e.key === 'PageDown' && this.currentSlide < this.children.length-1) {
-				this.currentSlide++;
-				this.showSlide(this.currentSlide);
+				if(this.children[this.currentSlide].next != null) {
+					this.children[this.currentSlide].next();
+				}
 			} else if(e.key === 'PageUp' && this.currentSlide > 0) {
-				this.currentSlide--;
-				this.showSlide(this.currentSlide);
+				if(this.children[this.currentSlide].prev != null) {
+					this.children[this.currentSlide].prev();
+				}
 			}
 		});
+
+		this.addEventListener('next-slide', e => {
+			this.currentSlide++;
+			this.showSlide(this.currentSlide);
+		});
+		this.addEventListener('prev-slide', e => {
+			this.currentSlide--;
+			this.showSlide(this.currentSlide);
+	});
 	}
 
 	showSlide(number) {
@@ -37,7 +48,7 @@ class PrPresentation extends HTMLElement {
 			child.style.display = 'none'
 		};
 
-		this.children[number].style.display = 'block';
+		this.children[number].style.display = '';
 	}
 }
 

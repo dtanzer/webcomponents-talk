@@ -4,6 +4,7 @@ let style = html`
 <style>
 	:host {
 		display: block;
+		margin: 1em 3em;
 	}
 </style>
 `;
@@ -22,6 +23,43 @@ class PrSlide extends HTMLElement {
 
 		if (window.ShadyCSS) { window.ShadyCSS.styleElement(this); }
 	}
-}
+
+	next() {
+		let nextCaptured = false;
+		for (let child of this.children) {
+			if(child.next != null && child.next()) {
+				nextCaptured = true;
+				break;
+			}
+		}
+
+		if(!nextCaptured) {
+			const nextSlideEvent = new CustomEvent("next-slide", {
+				bubbles: true,
+				cancelable: false,
+				detail: {
+					'my': 'detail',
+				},
+			});
+			this.dispatchEvent(nextSlideEvent);
+		}
+	}
+	prev() {
+		let prevCaptured = false;
+		for (let child of this.children) {
+			if(child.prev != null && child.prev()) {
+				prevCaptured = true;
+				break;
+			}
+		}
+
+		if(!prevCaptured) {
+			const prevSlideEvent = new CustomEvent("prev-slide", {
+				bubbles: true,
+				cancelable: false,
+			});
+			this.dispatchEvent(prevSlideEvent);
+		}
+	}}
 
 window.customElements.define('pr-slide', PrSlide);
