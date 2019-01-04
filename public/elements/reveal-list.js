@@ -7,10 +7,10 @@ let style = html`
 
 let template = html`
 ${style}
-<div><slot></slot></div>
+<ul><slot></slot></ul>
 `;
 
-class PrSlide extends HTMLElement {
+class RevealList extends HTMLElement {
 	constructor() {
 		super();
 		let shadowRoot = this.attachShadow({mode: 'open'});
@@ -21,4 +21,4 @@ class PrSlide extends HTMLElement {
 	}
 }
 
-window.customElements.define('pr-slide', PrSlide);
+window.customElements.define('reveal-list', RevealList);

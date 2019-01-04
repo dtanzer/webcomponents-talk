@@ -10,7 +10,7 @@ ${style}
 <div><slot></slot></div>
 `;
 
-class PrSlide extends HTMLElement {
+class PrPresentation extends HTMLElement {
 	constructor() {
 		super();
 		let shadowRoot = this.attachShadow({mode: 'open'});
@@ -21,4 +21,4 @@ class PrSlide extends HTMLElement {
 	}
 }
 
-window.customElements.define('pr-slide', PrSlide);
+window.customElements.define('pr-presentation', PrPresentation);
