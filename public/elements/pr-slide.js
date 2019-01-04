@@ -2,6 +2,9 @@ import { render, html } from '/js/lit-html/lit-html.js'
 
 let style = html`
 <style>
+	:host {
+		display: block;
+	}
 </style>
 `;
 

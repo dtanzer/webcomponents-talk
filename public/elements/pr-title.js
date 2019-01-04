@@ -6,6 +6,7 @@ let style = html`
 	font-size: 75%;
 }
 .title-content {
+	margin-top: 20vh;
 	text-align: center;
 }
 .title-content h1 {

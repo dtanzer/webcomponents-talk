@@ -30,3 +30,9 @@ pr-presentation {
 	left: 0;
 	right: 0;
 }
+
+pr-slide {
+	display: block;
+
+	margin: 1em 2em;
+}
