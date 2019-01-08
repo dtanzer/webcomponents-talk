@@ -39,14 +39,23 @@
 			</pr-slide>
 
 			<pr-slide>
+					<h1>Web Components</h1>
+
+					<p>"Write your Own HTML Elements"</p>
+					<pr-reveal><p>...and a little bit more</p></pr-reveal>
+			</pr-slide>
+
+			<pr-slide>
 				<h1>Web Components</h1>
 				<reveal-list>
 					<li><span style="text-decoration: line-through">HTML Imports</span></li>
 					<li>HTML Templates</li>
 					<li>Custom Elements</li>
 					<li>Shadow DOM</li>
-					<li>Custom Events</li>
+					<li>lit-html</li>
+					<li>Aside: CSS Custom Properties</li>
 					<li>Styling</li>
+					<li>Custom Events</li>
 					<li>React / Angular / ...</li>
 				</reveal-list>
 			</pr-slide>
@@ -150,11 +159,331 @@ window.customElements.<strong>define</strong>('pr-reveal', PrReveal);
 				</pr-reveal>
 			</pr-slide>
 
-			<pr-slide><h1>Shadow DOM</h1></pr-slide>
+			<pr-slide>
+				<h1>Shadow DOM</h1>
 
-			<pr-slide><h1>Custom Events</h1></pr-slide>
+				<pre>
+class PrTitle extends HTMLElement {
+  constructor() {
+    super();
+    let shadowRoot = this.attachShadow({mode: 'open'});
+
+    render(template, this.shadowRoot);
+
+    if (window.ShadyCSS) { window.ShadyCSS.styleElement(this); }
+  }
+}</pre>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>Shadow DOM</h1>
+
+				<div class="two-col">
+						<pre class="col">
+&lt;div class="title-content"&gt;
+  &lt;h1&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/h1&gt;
+&lt;/div&gt;</pre>
+						<pre class="col">
+&lt;pr-title&gt;Ex. Title&lt;/pr-title&gt;</pre>
+				</div>
+				<pre>
+&lt;pr-title id="shadow_title"&gt;
+  #shadow-root
+    &lt;style&gt;
+      ...
+    &lt;/style&gt;
+
+    &lt;div class="title-content"&gt;
+      &lt;h1&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/h1&gt;
+    &lt;/div&gt;
+  /#shadow-root
+  Ex. Title
+&lt;/pr-title&gt;</pre>
+			</pr-slide>
+			<pr-slide>
+				<h1>Shadow DOM</h1>
+
+				<pre>
+&lt;div class="title-content"&gt;
+  &lt;h1&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/h1&gt;
+&lt;/div&gt;</pre>
+
+				<div class="two-col">
+					<pre class="col">
+&lt;style&gt;
+  pr-title {
+    color: green;
+  }
+  .title-content {
+    color: red;
+  }
+&lt;/style&gt;
+&lt;pr-title id="shadow_title"&gt;Ex. Title&lt;/pr-title&gt;
+					</pre>
+					<div class="col">
+						<style>
+							pr-title {
+								color: green;
+							}
+							.title-content {
+								color: red;
+							}
+						</style>
+						<pr-title id="shadow_title">Ex. Title</pr-title>
+					</div>
+				</div>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>Shadow DOM</h1>
+
+				<div class="two-col">
+					<pre class="col">
+&lt;script&gt;
+function renderInner() {
+  const title2 = document.getElementById('shadow-title-2');
+  const innerClass = title2.getElementsByClassName('title-content');
+  document.getElementById('title-inner').innerHTML = 
+    title2.tagName+'&lt;br/&gt;'+innerClass.length;
+}
+&lt;/script&gt;
+
+&lt;pr-title id="shadow-title-2"&gt;t2&lt;/pr-title&gt;
+
+&lt;input type="button" onclick="renderInner()" value="Inner Class" /&gt;
+&lt;pre id="title-inner"&gt;Click above!&lt;/pre&gt;</pre>
+
+					<div class="col">
+						<script>
+function renderInner() {
+	const title2 = document.getElementById('shadow-title-2');
+	const innerClass = title2.getElementsByClassName('title-content');
+	document.getElementById('title-inner').innerHTML = title2.tagName+'<br/>'+innerClass.length;
+}
+						</script>
+
+						<pr-title id="shadow-title-2">t2</pr-title>
+
+						<input type="button" onclick="renderInner()" value="Inner Class" />
+						<pre id="title-inner">Click above!</pre>
+					</div>
+				</div>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>lit-html</h1>
+
+				<div class="two-col">
+					<pre class="col">
+import { render, html } from '/lit-html/lit-html.js'
+
+let <strong>style</strong> = html`
+&lt;style&gt;
+  ...
+&lt;/style&gt;
+`;
+
+let <strong>template</strong> = html`
+${<strong>style</strong>}
+&lt;div class="title-content"&gt;
+  &lt;h1&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/h1&gt;
+&lt;/div&gt;
+`;
+					</pre>
+					<pre class="col">
+class PrTitle extends HTMLElement {
+  constructor() {
+    super();
+    let shadowRoot = this.attachShadow({mode: 'open'});
+
+    <strong>render</strong>(<strong>template</strong>, this.shadowRoot);
+
+    if (window.ShadyCSS) { window.ShadyCSS.styleElement(this); }
+  }
+}
+					</pre>
+				</div>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>Aside: CSS Custom Properties</h1>
+
+				<div class="two-col">
+					<pre class="col">
+&lt;style&gt;
+  .button-1 {
+    color: #005;
+    background: #aaf;
+    border: 1px solid #005;
+    border-radius: 5px;
+    padding: 0.2em 1em;
+  }
+&lt;/style&gt;
+
+&lt;a class="button-1"&gt;Cancel&lt;/a&gt;
+&lt;a class="button-1"&gt;OK&lt;/a&gt;
+					</pre>
+					<div class="col">
+						<style>
+							.button-1 {
+								color: #005;
+								background: #aaf;
+								border: 1px solid #005;
+								border-radius: 5px;
+								padding: 0.2em 1em;
+							}
+						</style>
+
+						<a class="button-1">Cancel</a>
+						<a class="button-1">OK</a>
+					</div>
+				</div>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>Aside: CSS Custom Properties</h1>
+
+				<div class="two-col">
+					<pre class="col">
+&lt;style&gt;
+  body {
+    --foreground-main: #005;
+    --foreground-deem: #555;
+
+    --background-main: #aaf;
+    --background-deem: #ddd;
+  }
+  .button-2 {
+    color: var(--foreground-main);
+    background: var(--background-main);
+    border: 1px solid var(--foreground-main);
+    border-radius: 5px;
+    padding: 0.2em 1em;
+  }
+&lt;/style&gt;
+
+&lt;a class="button-2"&gt;Cancel&lt;/a&gt;
+&lt;a class="button-2"&gt;OK&lt;/a&gt;
+					</pre>
+					<div class="col">
+						<style>
+							body {
+								--foreground-main: #005;
+								--foreground-deem: #555;
+
+								--background-main: #aaf;
+								--background-deem: #ddd;
+							}
+							.button-2 {
+								color: var(--foreground-main);
+								background: var(--background-main);
+								border: 1px solid var(--foreground-main);
+								border-radius: 5px;
+								padding: 0.2em 1em;
+							}
+						</style>
+
+						<a class="button-2">Cancel</a>
+						<a class="button-2">OK</a>
+					</div>
+				</div>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>Aside: CSS Custom Properties</h1>
+
+				<div class="two-col">
+					<pre class="col">
+&lt;style&gt;
+  body {
+    --foreground-main: #005;
+    --foreground-deem: #555;
+  }
+  .button-3 {
+    --button-fg: var(--foreground-main);
+    --button-bg: var(--background-main);
+    --button-border: var(--foreground-main);
+
+    color: var(--button-fg);
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);}
+&lt;/style&gt;
+
+&lt;a class="button-3"&gt;Cancel&lt;/a&gt;
+&lt;a class="button-3"&gt;OK&lt;/a&gt;
+					</pre>
+					<div class="col">
+						<style>
+							body {
+								--foreground-main: #005;
+								--foreground-deem: #555;
+
+								--background-main: #aaf;
+								--background-deem: #ddd;
+							}
+							.button-3 {
+								--button-fg: var(--foreground-main);
+								--button-bg: var(--background-main);
+								--button-border: var(--foreground-main);
+								color: var(--button-fg);
+								background: var(--button-bg);
+								border: 1px solid var(--button-border);
+								border-radius: 5px;
+								padding: 0.2em 1em;
+							}
+						</style>
+
+						<a class="button-3">Cancel</a>
+						<a class="button-3">OK</a>
+					</div>
+				</div>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>Aside: CSS Custom Properties</h1>
+
+				<div class="two-col">
+					<pre class="col">
+&lt;style&gt;
+  .button-4 {
+    --button-fg: var(--foreground-main);
+    --button-bg: var(--background-main);
+    --button-border: var(--foreground-main);
+
+    color: var(--button-fg);
+    background: var(--button-bg);
+    border: 1px solid var(--button-border);
+  }
+&lt;/style&gt;
+
+&lt;a class="button-4"
+   <strong>style</strong>="<strong>--button-fg</strong>: var(--foreground-deem); --button-bg: var(--background-deem); --button-border: var(--foreground-deem);"&gt;
+  Cancel&lt;/a&gt;
+&lt;a class="button-4"&gt;OK&lt;/a&gt;
+					</pre>
+					<div class="col">
+						<style>
+							.button-4 {
+								--button-fg: var(--foreground-main);
+								--button-bg: var(--background-main);
+								--button-border: var(--foreground-main);
+								color: var(--button-fg);
+								background: var(--button-bg);
+								border: 1px solid var(--button-border);
+								border-radius: 5px;
+								padding: 0.2em 1em;
+							}
+						</style>
+
+						<a class="button-4" style="--button-fg: var(--foreground-deem); --button-bg: var(--background-deem); --button-border: var(--foreground-deem);">Cancel</a>
+						<a class="button-4">OK</a>
+					</div>
+				</div>
+			</pr-slide>
 
 			<pr-slide><h1>Styling</h1></pr-slide>
+
+			<pr-slide><h1>Custom Events</h1></pr-slide>
 
 			<pr-slide><h1>React / Angular / ...</h1></pr-slide>
 
