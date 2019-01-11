@@ -10,5 +10,9 @@
   },
   "scripts": {
     "server": "node _test/index.js"
+  },
+  "devDependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   }
 }

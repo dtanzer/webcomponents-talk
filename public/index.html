@@ -14,7 +14,9 @@
 		<meta name="theme-color" content="#000000" />
 
 		<script type="application/javascript" src="/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-		
+		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
 		<title>Web Components</title>
 	</head>
 	<body>
@@ -636,11 +638,111 @@ class PrPresentation extends HTMLElement {
 
 			<pr-slide>
 				<h1>Using Web Components in React</h1>
+
+				<div class="two-col">
+					<pre class="col">
+&lt;script&gt;
+  class MyReactComponent extends React.Component {
+    <span class="light-text">//...</span>
+    render() {
+      return React.createElement(
+        'div',
+        { },
+        [
+          React.createElement('p', {}, 
+            'I am a react component'),
+          React.createElement('pr-title', {}, 
+            this.state.title)
+        ]
+      );
+    }
+  }
+&lt;/script&gt;
+
+&lt;div id="react-1"&gt;&lt;/div&gt;</pre>
+					<div class="col">
+						<script>
+							class MyReactComponent extends React.Component {
+								constructor(props) {
+									super(props);
+									this.state = { title: props.title || "React" };
+								}
+		
+								render() {
+									return React.createElement(
+										'div',
+										{ },
+										[
+											React.createElement('p', {}, 'I am a react component'),
+											React.createElement('pr-title', {}, this.state.title)
+										]
+									);
+								}
+							}
+						</script>
+			
+						<div id="react-1"></div>
+					</div>
+				</div>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>Using React in Web Components </h1>
+
+				<div class="two-col">
+					<pre class="col">
+&lt;script&gt;
+  class ReactContainer extends HTMLElement {
+    connectedCallback() {
+      const text = document.createElement('p');
+      text.innerHTML = "I am a web component";
+      const mountPoint = document.createElement('span');
+
+      const shadow = this.attachShadow({ mode: 'open' });
+      shadow.appendChild(text);
+      shadow.appendChild(mountPoint);
+
+      ReactDOM.render(React.createElement(MyReactComponent, 
+        { title: 'WebC'}), mountPoint);
+    }
+  }
+  customElements.define('react-container', ReactContainer);
+&lt;/script&gt;
+
+&lt;react-container&gt;&lt;/react-container&gt;
+					</pre>
+					<div class="col">
+						<script>
+							class ReactContainer extends HTMLElement {
+								connectedCallback() {
+									const text = document.createElement('p');
+									text.innerHTML = "I am a web component";
+									const mountPoint = document.createElement('span');
+
+									const shadow = this.attachShadow({ mode: 'open' });
+									shadow.appendChild(text);
+									shadow.appendChild(mountPoint);
+		
+									ReactDOM.render(React.createElement(MyReactComponent, { title: 'WebC'}), mountPoint);
+								}
+							}
+							customElements.define('react-container', ReactContainer);
+						</script>
+		
+						<react-container></react-container>
+					</div>
+				</div>
 			</pr-slide>
 
 			<pr-slide>
 				<h1>David Tanzer</h1>
 			</pr-slide>
 		</pr-presentation>
+
+
+		<script type="module">
+			const reactContainer1 = document.querySelector('#react-1');
+			ReactDOM.render(React.createElement(MyReactComponent), reactContainer1);
+		</script>
 	</body>
 </html>
