@@ -614,7 +614,7 @@ class PrPresentation extends HTMLElement {
 
 				<pr-reveal class="two-col">
 					<div class="col">
-						<h2>Container Components</h2>
+						<h2>Container C.</h2>
 
 						<ul>
 							<li>Know how to <strong>obtain</strong> the data to display.</li>
@@ -623,15 +623,18 @@ class PrPresentation extends HTMLElement {
 						</ul>
 					</div>
 					<div class="col">
-						<h2>Container Components</h2>
+						<h2>Presentational C.</h2>
 
 						<ul>
 							<li>Know how to <strong>display</strong> data.</li>
-							<li>Do <strong>not</strong> know how to obtain the data to display.</li>
+							<li>Do <strong>not</strong> know how to obtain the data.</li>
 							<li>Contain container components and other presentational components.</li>
 						</ul>
 
-						<p>Could be web components <strong>if they contain no other presentational components</strong>.</p>
+						<p>Could be web components<br/>
+							<strong>if they contain no other presentational components</strong><br/>
+							<span class="light-text">or web components that render react components</span>.
+						</p>
 					</div>
 				</pr-reveal>
 			</pr-slide>
@@ -735,7 +738,40 @@ class PrPresentation extends HTMLElement {
 			</pr-slide>
 
 			<pr-slide>
+				<h1>Angular</h1>
+
+				<p>Basically...</p>
+
+				<pre>
+const customButton = <strong>createCustomElement</strong>(ButtonComponent, { injector });
+<strong>customElements</strong>.define('custom-button', customButton);</pre>
+			</pr-slide>
+
+			<pr-slide>
 				<h1>David Tanzer</h1>
+
+				<div class="two-col">
+					<div class="col two-row">
+						<div class="row">
+							Twitter: <strong>@dtanzer</strong>
+							<img class="screenshot" src="/images/twitter.png" alt="Screenshot of David Tanzer's Twitter account"/>
+						</div>
+						<div class="row">
+							Youtube: <strong>David Tanzer</strong>
+							<img class="screenshot" src="/images/youtube.png" alt="Screenshot of David Tanzer's Twitter account"/>
+						</div>
+					</div>
+					<div class="col two-row">
+						<div class="row">
+							Web: <strong>davidtanzer.net</strong>
+							<img class="screenshot" src="/images/dtn.png" alt="Screenshot of David Tanzer's Twitter account"/>
+						</div>
+						<div class="row">
+							GitHub: <strong>dtanzer</strong>
+							<img class="screenshot" src="/images/github.png" alt="Screenshot of David Tanzer's Twitter account"/>
+						</div>
+					</div>
+				</div>
 			</pr-slide>
 		</pr-presentation>
 
