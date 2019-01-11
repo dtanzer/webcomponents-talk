@@ -41,7 +41,7 @@ class PrPresentation extends HTMLElement {
 		this.addEventListener('prev-slide', e => {
 			this.currentSlide--;
 			this.showSlide(this.currentSlide);
-	});
+		});
 	}
 
 	showSlide(number) {

@@ -28,7 +28,7 @@
 
 		<pr-presentation>
 			<pr-slide style="--slide-background: #ff7">
-				<pr-title>
+				<pr-title style="color: black">
 					<div class="main">Web Components</div>
 					<div class="subtitle">A Quick Introduction</div>
 				</pr-title>
@@ -556,10 +556,91 @@ class PrTitle extends HTMLElement {
 				</div>
 			</pr-slide>
 
-			<pr-slide><h1>Custom Events</h1></pr-slide>
+			<pr-slide>
+				<h1>Custom Events</h1>
 
-			<pr-slide><h1>React / Angular / ...</h1></pr-slide>
+				<div class="two-col">
+					<pre class="col">
+class PrSlide extends HTMLElement {
+  <span class="light-text">//...</span>
+  next() {
+    <span class="light-text">//...</span>
+    if(!nextCaptured) {
+      const nextSlideEvent = new CustomEvent("next-slide", {
+        bubbles: true,
+        cancelable: false,
+        detail: {
+          'my': 'detail',
+        },
+      });
+      this.dispatchEvent(nextSlideEvent);
+    }
+  }
+  <span class="light-text">//...</span>
+}</pre>
+					<pre class="col">
+class PrPresentation extends HTMLElement {
+  constructor() {
+    <span class="light-text">//...</span>
+    this.addEventListener('next-slide', e => {
+      this.currentSlide++;
+      this.showSlide(this.currentSlide);
+    });
+    this.addEventListener('prev-slide', e => {
+      this.currentSlide--;
+      this.showSlide(this.currentSlide);
+    });
+  }
+  <span class="light-text">//...</span>
+}</pre>
+				</div>
+			</pr-slide>
 
+			<pr-slide>
+				<h1>React / Angular / ...</h1>
+
+				<reveal-list>
+					<li>Use web components within React / Angular / ... components</li>
+					<li>... Why?</li>
+					<li>Use React / Angular / ... components as web components</li>
+					<li>... How?</li>
+				</reveal-list>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>Container / Presentational Components</h1>
+
+				<pr-reveal class="two-col">
+					<div class="col">
+						<h2>Container Components</h2>
+
+						<ul>
+							<li>Know how to <strong>obtain</strong> the data to display.</li>
+							<li>Do <strong>not</strong> know how to display the data.</li>
+							<li>Contain presentational components.</li>
+						</ul>
+					</div>
+					<div class="col">
+						<h2>Container Components</h2>
+
+						<ul>
+							<li>Know how to <strong>display</strong> data.</li>
+							<li>Do <strong>not</strong> know how to obtain the data to display.</li>
+							<li>Contain container components and other presentational components.</li>
+						</ul>
+
+						<p>Could be web components <strong>if they contain no other presentational components</strong>.</p>
+					</div>
+				</pr-reveal>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>Using Web Components in React</h1>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>David Tanzer</h1>
+			</pr-slide>
 		</pr-presentation>
 	</body>
 </html>
