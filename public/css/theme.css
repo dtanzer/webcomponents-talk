@@ -8,6 +8,11 @@ body {
 	background: white;
 
 	font-size: 4vh;
+	font-family: 'Open Sans', Helvetica,Arial,sans-serif;
+}
+
+h1, h2, h3 {
+	font-family: 'Arvo', serif;
 }
 
 h1 {
@@ -20,6 +25,14 @@ h2 {
 
 h3 {
 	font-size: 130%;
+}
+
+a, a:hover, a:visited, a:active {
+	color: #555;
+}
+
+a:hover {
+	text-decoration: none;
 }
 
 pr-presentation {
@@ -51,6 +64,10 @@ pre {
 
 .two-col .col:first-child {
 	margin-left: 0;
+}
+
+.two-col h2 {
+	margin: 0;
 }
 
 .light-text {

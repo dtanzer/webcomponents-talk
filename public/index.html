@@ -7,6 +7,9 @@
 		<link rel="stylesheet" href="/css/theme.css"/>
 		<link rel="stylesheet" href="/css/custom.css"/>
 
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo:400,700">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+			
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -30,7 +33,7 @@
 
 		<pr-presentation>
 			<pr-slide style="--slide-background: #ff7">
-				<pr-title style="color: black">
+				<pr-title>
 					<div class="main">Web Components</div>
 					<div class="subtitle">A Quick Introduction</div>
 				</pr-title>
@@ -96,7 +99,7 @@
   }
 &lt;/script&gt;
 
-&lt;a href="#" onclick="insertTemplate()"&gt;Insert Template&lt;/a&gt;
+&lt;input type="button" onclick="insertTemplate()" value="Insert Template"/&gt;
 &lt;div id="example-template-target"&gt;&lt;/div&gt;</pre>
 					<div class="col">
 							<template id="example-template">
@@ -175,6 +178,7 @@ class PrTitle extends HTMLElement {
     if (window.ShadyCSS) { window.ShadyCSS.styleElement(this); }
   }
 }</pre>
+				<pr-title>Ex. Title</pr-title>
 			</pr-slide>
 
 			<pr-slide>
@@ -188,6 +192,7 @@ class PrTitle extends HTMLElement {
 						<pre class="col">
 &lt;pr-title&gt;Ex. Title&lt;/pr-title&gt;</pre>
 				</div>
+				<pr-reveal>
 				<pre>
 &lt;pr-title id="shadow_title"&gt;
   #shadow-root
@@ -201,6 +206,7 @@ class PrTitle extends HTMLElement {
   /#shadow-root
   Ex. Title
 &lt;/pr-title&gt;</pre>
+</pr-reveal>
 			</pr-slide>
 			<pr-slide>
 				<h1>Shadow DOM</h1>
@@ -224,7 +230,7 @@ class PrTitle extends HTMLElement {
 					</pre>
 					<div class="col">
 						<style>
-							pr-title {
+							pr-title#shadow_title {
 								color: green;
 							}
 							.title-content {
@@ -610,7 +616,7 @@ class PrPresentation extends HTMLElement {
 			</pr-slide>
 
 			<pr-slide>
-				<h1>Container / Presentational Components</h1>
+				<h1>Container / Pres. Comps</h1>
 
 				<pr-reveal class="two-col">
 					<div class="col">
@@ -640,7 +646,7 @@ class PrPresentation extends HTMLElement {
 			</pr-slide>
 
 			<pr-slide>
-				<h1>Using Web Components in React</h1>
+				<h1>Using Web Comps in React</h1>
 
 				<div class="two-col">
 					<pre class="col">
@@ -690,7 +696,7 @@ class PrPresentation extends HTMLElement {
 			</pr-slide>
 
 			<pr-slide>
-				<h1>Using React in Web Components </h1>
+				<h1>Using React in Web Comps </h1>
 
 				<div class="two-col">
 					<pre class="col">
