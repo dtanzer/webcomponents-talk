@@ -1,0 +1,9 @@
+.curse * {
+	display: none;
+}
+
+.curse::after {
+	content: "*$%&@";
+	display: inline;
+	color: red;
+}

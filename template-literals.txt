@@ -1,0 +1,15 @@
+`foo bar`
+
+`foo
+bar
+foobar`
+
+const val = "value"
+`foo ${val} bar`
+
+function mytag(strings, ...keys) {
+	console.log(strings, keys);
+	return "A tagged string";
+}
+mytag`foo bar`
+mytag`foo bar ${val} baz ${x} end`

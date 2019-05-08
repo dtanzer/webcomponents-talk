@@ -44,6 +44,40 @@
 			</pr-slide>
 
 			<pr-slide>
+				<h1>Slides...</h1>
+
+				<pr-reveal>
+					<pre>
+&lt;pr-slide&gt;
+    &lt;h1&gt;Slides...&lt;/h1&gt;
+
+    &lt;pr-reveal&gt;
+        &lt;pre&gt;
+            &lt;pr-slide&gt;
+                &lt;h1&gt;Slides...&lt;/h1&gt;
+
+                &lt;pr-reveal&gt;
+                    &lt;pre&gt;
+                        &lt;pr-slide&gt;
+                            &lt;h1&gt;Slides...&lt;/h1&gt;
+      
+                            &lt;pr-reveal&gt;
+                                &lt;pre&gt;
+                                    ...
+                                &lt;/pre&gt;
+                            &lt;/pr-reveal&gt;
+                        &lt;/pr-slide&gt;
+                    &lt;/pre&gt;
+                &lt;/pr-reveal&gt;
+            &lt;/pr-slide&gt;
+        &lt;/pre&gt;
+    &lt;/pr-reveal&gt;
+&lt;/pr-slide&gt;
+					</pre>
+				</pr-reveal>
+			</pr-slide>
+
+			<pr-slide>
 					<h1>Web Components</h1>
 
 					<p>"Write your Own HTML Elements"</p>
@@ -78,6 +112,44 @@
 					<pre>
 &lt;script type="module" src="elements/pr-slide.js"&gt;&lt;/script&gt;</pre>
 				</pr-reveal>
+			</pr-slide>
+
+			<pr-slide>
+				<h1>HTML Imports</h1>
+
+				<pr-reveal>
+							<pre>
+&lt;script&gt;
+    function onImportLoaded() {
+        var imported = document.getElementById("imported-html").import;
+        document.getElementById("import-target").appendChild(imported.body);
+    }
+&lt;/script&gt;
+
+&lt;link rel="import" href="import.html" id="imported-html" onload="onImportLoaded()"/&gt;
+							</pre>
+				</pr-reveal>
+
+				<pr-reveal>
+							<pre>
+&lt;h2&gt;I want my &lt;span class="curse"&gt;&lt;i&gt;fucking&lt;/i&gt;&lt;/span&gt; HTML imports back&lt;/h2&gt;
+
+Give me back my imports!
+							</pre>
+				</pr-reveal>
+
+				<pr-reveal>
+						<div id="import-target" class="col"></div>
+				</pr-reveal>
+
+				<script>
+					function onImportLoaded() {
+						var imported = document.getElementById("imported-html").import;
+						document.getElementById("import-target").appendChild(imported.body);
+					}
+				</script>
+				
+				<link rel="import" href="import.html" id="imported-html" onload="onImportLoaded()"/>
 			</pr-slide>
 
 			<pr-slide>
@@ -611,7 +683,7 @@ class PrPresentation extends HTMLElement {
 					<li>Use web components within React / Angular / ... components</li>
 					<li>... Why?</li>
 					<li>Use React / Angular / ... components as web components</li>
-					<li>... How?</li>
+					<li>... How? Why?</li>
 				</reveal-list>
 			</pr-slide>
 
@@ -778,6 +850,10 @@ const customButton = <strong>createCustomElement</strong>(ButtonComponent, { inj
 						</div>
 					</div>
 				</div>
+			</pr-slide>
+
+			<pr-slide style="background-image: url('/images/devteams-team.jpg'); background-size: 100%; background-repeat: no-repeat; background-position-y: bottom;">
+				
 			</pr-slide>
 		</pr-presentation>
 
